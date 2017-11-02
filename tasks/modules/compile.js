@@ -43,7 +43,8 @@ function clearCache(targetName, cacheDir) {
 function resolveTypeScriptBinPath() {
     var ownRoot = path.resolve(path.dirname(module.filename), '../..');
     var userRoot = path.resolve(ownRoot, '..', '..');
-    var binSub = path.join('node_modules', 'typescript', 'bin');
+    var binSub = path.join(require.resolve('typescript'), 'bin');
+    return binSub;
     if (fs.existsSync(path.join(userRoot, binSub))) {
         return path.join(userRoot, binSub);
     }
